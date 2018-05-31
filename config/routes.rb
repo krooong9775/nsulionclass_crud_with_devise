@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  devise_for :users
   root 'home#index'
   get 'index', to: 'home#index', as: 'index'
   get 'write', to: 'home#write'

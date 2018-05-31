@@ -1,6 +1,10 @@
 class HomeController < ApplicationController
   def index
       @every_post = Post.all
+    if user_signed_in?
+    else
+      redirect_to "/users/sign_in"
+    end
   end
 
   def write
@@ -13,7 +17,6 @@ class HomeController < ApplicationController
   def update_result
     @title = params[:title]
     @content = params[:content]
-    
     @update_post = Post.find(params[:post_id])
     @update_post.title = @title
     @update_post.content = @content
